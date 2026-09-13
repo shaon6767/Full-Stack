@@ -1,15 +1,20 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
+const rootDir = require("../utils/path.utils");
 
 router.get("/add-home", (req, res) => {
-  res.sendFile(path.join(__dirname, "../", "views", "register.html"));
+  res.sendFile(path.join(rootDir, "views", "register.html"));
 });
+
+const registerHome = [];
 
 router.post("/add-home", (req, res) => {
   const { name } = req.body;
   console.log("Received data:", name);
-  res.sendFile(path.join(__dirname, "../", "views", "addedHome.html"));
+  registerHome.push(name);
+  res.sendFile(path.join(rootDir, "views", "addedHome.html"));
 });
 
-module.exports = router;
+exports.router = router;
+exports.registerHome = registerHome;
