@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: 'My Homes' }) %>
+
+<main class="mx-auto max-w-5xl px-6 py-20">
+  <div class="rounded-3xl border border-slate-200 bg-white p-10 shadow-xl">
+    <div class="mb-8 text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">Homes</p>
+      <h1 class="mt-2 text-3xl font-bold text-slate-900">Your homes</h1>
+    </div>
+
+    <% if (registerHome && registerHome.length > 0) { %>
+      <div class="grid gap-4 md:grid-cols-2">
+        <% registerHome.forEach((home) => { %>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+            <h2 class="text-xl font-semibold text-slate-800"><%= home %></h2>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center text-slate-600">
+        No homes added yet.
+      </div>
+    <% } %>
+
+    <div class="mt-8 flex justify-center">
+      <a href="/" class="rounded-xl bg-emerald-600 px-5 py-3 font-medium text-white hover:bg-emerald-700">Back to Home</a>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

@@ -1,9 +1,14 @@
 const express = require("express");
 const path = require("path");
+
 const userRouter = require("./routes/user.route");
 const { router: hostRouter } = require("./routes/host.route");
+
 const app = express();
+
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
