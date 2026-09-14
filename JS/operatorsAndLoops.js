@@ -60,3 +60,62 @@
 // }
 
 // console.log("hour" && 10);
+
+// <---- LOOPS ---->
+
+// let i = 4;
+// while (i) {
+//   i--;
+//   console.log(i);
+// }
+
+// let i = 0; // <-- number > 4 = infinite loop
+// while (i > 4) {
+//   i++;
+//   console.log(i);
+// }
+
+// let i = 1;
+// while (i = 3) {
+//   i++;
+//   console.log(i);
+// }
+
+// let i = 1;
+// while (i <= 3) {
+//   i++;
+//   console.log(i);
+// }
+
+//🔁 for loop
+
+// for (begin; condition; step) {
+//   // ... loop body ...
+// }
+
+// for (let i = 0; i < 3; i++) {
+//   console.log(i);
+// }
+
+// let i = 0;
+// for (; i < 3; ) i++;
+// console.log(i); //3
+
+// for (let i = 0; i < 3; i++) {
+//   console.log(i); // 0 1 2
+// }
+
+// for (let i = 1; i < 6; i++) {
+//   if (i % 2 == 0) {
+//     console.log(i);
+//   }
+// }
+
+// for (let i = 1; i < 8; i++) {
+//   if (i % 2 == 0) continue;
+//   console.log(i);
+// }
+
+// for (let i = 2; i < 8; i++) {
+//   if (i % 2) console.log(i);
+// }
