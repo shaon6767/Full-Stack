@@ -119,3 +119,98 @@
 
 // console.log(new UserTwo());
 
+// let user = {};
+// console.log(user?.name?.age?.color); //undefined instead of error
+
+// let user = {
+//   name: "John",
+// };
+
+// let id = Symbol("id");
+
+// user[id] = 1;
+
+// console.log(user[id]);
+
+// <-----Strings----->
+
+// let str = `Hellow`;
+
+// console.log(str[0]);
+// console.log(str.at(0));
+// console.log(str.at(-1));
+// console.log(str.indexOf("o"));
+
+// let a = "I love tea";
+// console.log(a.indexOf("tea"));
+// console.log(a.includes("a",3))
+// console.log("tea".includes("a",3))
+
+// let str = "hellow";
+
+// console.log(str.slice(0, 3));
+
+// let str1 = "shawn";
+// console.log(str1.slice(2, 3));
+
+// <---Array--->
+
+// let fruits = ["mango", "apple", "banana"];
+// console.log(fruits.length);
+// console.log(fruits[fruits.length - 1]);
+// console.log(fruits.at(-1));
+
+// let arr = [1, 2, 3, 4, 5];
+// for (let array of arr) {
+//   console.log(array);
+//   console.log(arr);
+// }
+
+// let arr = ["apple", "banana", "mango", "tea"];
+// arr.splice(0, 0, "I", "Love");
+// // console.log(arr);
+
+// arr.forEach((i) => {
+//   arr.push(i + "nigas");
+// });
+// console.log(arr);
+
+// let user = [
+//   { id: 1, name: "John", age: 20 },
+//   { id: 2, name: "Mike", age: 23 },
+//   { id: 3, name: "Kyle", age: 26 },
+// ];
+
+// let filterUser = user.filter((item) => item.id < 3);
+// console.log(filterUser);
+
+// let arr = [1, 29, 16, 7, 9];
+// arr.sort();
+// console.log(arr);
+// arr.sort((a, b) => a - b);
+// console.log(arr);
+// arr.sort((a, b) => b - a);
+// console.log(arr);
+
+// let str = "I got tea";
+// let arr = str.split(' ');
+// console.log(arr);
+
+// let fruits = ["apple", "apple", "mango", "apple"];
+
+// let count = fruits.reduce((acc, fruit) => {
+//   acc[fruit] = (acc[fruit] || 0) + 1;
+//   return acc;
+// }, {});
+
+// console.log(count)
+
+
+let fruits = ["apple", "apple", "mango", "apple"];
+
+let count = fruits.reduceRight((acc, i) => {
+  acc[i] = (acc[i] || 0) + 1;
+  return acc;
+}, {});
+
+console.log(count)
