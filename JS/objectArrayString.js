@@ -298,4 +298,22 @@ for (let result of range) {
 // console.log(name);
 // console.log(age);
 
+// let student = {
+//   name: "John",
+//   age: 30,
+//   isAdmin: false,
+//   courses: ["html", "css", "js"],
+//   spouse: null,
+// };
+// let json = JSON.stringify(student);
 
+// console.log(json);
+
+// let parse = JSON.parse(json);
+// console.log(parse);
+
+// let userData =
+//   '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
+
+// let user = JSON.parse(userData);
+// console.log(user);
