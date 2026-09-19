@@ -155,4 +155,8 @@
 // console.log(calculateTotal.name);
 // console.log(calculateTotal.length);
 
+// const id = setInterval(() => console.log("done"), 1000);
+// setTimeout(() => clearInterval(id), 8000);
 
+// const id = setInterval(() => console.log("happend"), 3000);
+// setTimeout(() => clearInterval(id),9000);
