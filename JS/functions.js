@@ -55,7 +55,7 @@
 //   const inner = () => {
 //     console.log(arguments); //arrow function doesnt have arguments, even if u take them it will show the outer one
 //   };
-  
+
 //   inner(9,10); //argument taken but didnt work
 // }
 
@@ -67,41 +67,66 @@
 //   const inner = (...args) => {
 //     console.log(args); // but you can take rest parameters as arguments
 //   };
-  
+
 //   inner(9,10); // now it worked
 // }
 
 // outer(10, 20);
 
-const user = {
-  name: 'Shawn',
-  friends: ['ali', 'rifat'],
+// const user = {
+//   name: "Shawn",
+//   friends: ["ali", "rifat"],
 
-  // rule 3: called as user.greet(), so this = user
-  greet() {
-    console.log('hi, ' + this.name);
-  },
+//   greet() {
+//     console.log("hi, " + this.name);
+//   },
 
-  // arrow inside a method: keeps the method's this
-  listGood() {
-    this.friends.forEach(f => {
-      console.log(this.name + ' knows ' + f);   // works
-    });
-  },
+//   listGood() {
+//     this.friends.forEach((f) => {
+//       console.log(this.name + " knows " + f); // works
+//     });
+//   },
 
-  // normal function inside a method: rule 4 kicks in
-  listBad() {
-    this.friends.forEach(function (f) {
-      console.log(this.name + ' knows ' + f);   // this is undefined
-    });
-  },
+//   listBad() {
+//     this.friends.forEach(function (f) {
+//       console.log(this.name + " knows " + f); // this is undefined
+//     });
+//   },
 
-  // arrow AS the method: there is no outer object, so this is not user
-  broken: () => console.log(this.name)          // undefined
-};
+//   broken: () => console.log(this.name),
+// };
 
-const loose = user.greet;   // no dot anymore
-loose();                    // rule 4: this is undefined -> TypeError
-const fixed = user.greet.bind(user);
-fixed();  
+// const loose = user.greet;
+// loose();
+// const fixed = user.greet.bind(user);
+// fixed();
 
+// let x = 5;
+// [1, 2].forEach((n) => {console.log(n)});
+// console.log(x);
+
+// for (var i = 0; i < 3; i++) {
+//   console.log(i);
+// }
+
+// console.log(typeof function () {});
+
+// let i = 1;
+// const arr = ['a', 'b', 'c'];
+// // console.log(arr[i++]);
+// console.log(arr[i++]);
+
+// const arr = ['apple','banana','mango']
+
+// for (const array of Object.entries(arr)) {
+//   console.log(array);
+// }
+
+// const user = ["Shawn", "Dhaka"];
+// for (const key in user) {
+//   console.log(key, user[key]);
+// }
+
+// const nums = [519];
+// let newNum = [...nums.toString()];
+// console.log(newNum);
