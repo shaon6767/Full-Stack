@@ -130,3 +130,29 @@
 // const nums = [519];
 // let newNum = [...nums.toString()];
 // console.log(newNum);
+
+// const MathUtils = (function () {
+//   let callCount = 0; // private
+//   return {
+//     add(a, b) {
+//       callCount++;
+//       return a + b;
+//     },
+//     getCallCount() {
+//       return callCount;
+//     },
+//   };
+// })();
+
+// console.log(MathUtils.add(1, 2));
+// console.log(MathUtils.getCallCount());
+
+// FUNCTIONS ARE OBJECTS
+
+// function calculateTotal(price, tax) {
+//   return price + tax;
+// }
+// console.log(calculateTotal.name);
+// console.log(calculateTotal.length);
+
+
