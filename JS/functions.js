@@ -160,3 +160,35 @@
 
 // const id = setInterval(() => console.log("happend"), 3000);
 // setTimeout(() => clearInterval(id),9000);
+
+// const cache = {};
+
+// function square(n) {
+//   if (n in cache) {
+//     return cache[n];
+//   }
+
+//   const result = n * n;
+//   cache[n] = result;
+//   console.log(n * n === cache[n]);
+
+//   return result;
+// }
+
+
+// // leak: the listener keeps 'bigData' reachable forever,
+// // even after the button is removed from the page
+// function attachHandler() {
+//   const bigData = new Array(1_000_000).fill('x');
+//   button.addEventListener('click', () => {
+//     console.log(bigData.length);   // closure keeps bigData alive
+//   });
+// }
+
+// // fixed: remove the listener when you're done with it
+// function attachHandlerSafe() {
+//   const bigData = new Array(1_000_000).fill('x');
+//   function onClick() { console.log(bigData.length); }
+//   button.addEventListener('click', onClick);
+//   return () => button.removeEventListener('click', onClick);   // cleanup
+// }
