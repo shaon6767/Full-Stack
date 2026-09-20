@@ -175,7 +175,6 @@
 //   return result;
 // }
 
-
 // // leak: the listener keeps 'bigData' reachable forever,
 // // even after the button is removed from the page
 // function attachHandler() {
@@ -193,14 +192,13 @@
 //   return () => button.removeEventListener('click', onClick);   // cleanup
 // }
 
-
 // ✅ With prototype — ONE shared copy
-function User(name) { this.name = name; }
-User.prototype.greet = function() { return this.name; };
+// function User(name) { this.name = name; }
+// User.prototype.greet = function() { return this.name; };
 
-const u1 = new User("A");
-const u2 = new User("B");
-u1.greet === u2.greet; // true ← SAME function, shared! 💾 saved!
+// const u1 = new User("A");
+// const u2 = new User("B");
+// u1.greet === u2.greet; // true ← SAME function, shared! 💾 saved!
 
 // ✅ With constructors — instanceof check
 // const user = { name: "Alice", role: "admin" };
@@ -220,11 +218,11 @@ u1.greet === u2.greet; // true ← SAME function, shared! 💾 saved!
 
 // const admin = { name: "A", role: "admin", canDelete: true };
 // const user = { name: "B", role: "user" };
-// function User(name) { 
-//     this.name = name; 
+// function User(name) {
+//     this.name = name;
 // }
-// User.prototype.greet = function() { 
-//     return `Hi, I'm ${this.name}`; 
+// User.prototype.greet = function() {
+//     return `Hi, I'm ${this.name}`;
 // };
 
 // function Admin(name) {
@@ -260,3 +258,44 @@ u1.greet === u2.greet; // true ← SAME function, shared! 💾 saved!
 //   this.make = make;
 //   this.model = model;
 // }
+
+//Prototype
+// function User(name, email) {
+//   this.name = name;
+//   this.email = email;
+// }
+
+// // Shared methods (ONE copy in memory, shared by ALL instances)
+// User.prototype.greet = function () {
+//   return `Hi, I'm ${this.name} (${this.email})`;
+// };
+// User.prototype.changeName = function (newName) {
+//   this.name = newName;
+// };
+
+// const u1 = new User("Alice", "alice@test.com");
+// const u2 = new User("Bob", "bob@test.com");
+
+// u1.greet(); // "Hi, I'm Alice (alice@test.com)"
+// u2.greet(); // "Hi, I'm Bob (bob@test.com)"
+
+// u1.greet === u2.greet; // true
+
+// No constructor, no `new`, just pure prototype
+// const userProto = {
+//   greet() {
+//     return console.log(`Hi, I'm ${this.name}`);
+//   },
+//   changeName(newName) {
+//     this.name = newName;
+//   },
+// };
+
+// const user = Object.create(userProto);
+// user.name = "shawn";
+// user.email = "shawn@test.com";
+
+// user.greet();
+
+// // Check the chain:
+// Object.getPrototypeOf(user) === userProto; // true
