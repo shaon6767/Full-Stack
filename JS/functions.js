@@ -192,3 +192,37 @@
 //   button.addEventListener('click', onClick);
 //   return () => button.removeEventListener('click', onClick);   // cleanup
 // }
+
+
+// ✅ With prototype — ONE shared copy
+function User(name) { this.name = name; }
+User.prototype.greet = function() { return this.name; };
+
+const u1 = new User("A");
+const u2 = new User("B");
+u1.greet === u2.greet; // true ← SAME function, shared! 💾 saved!
+
+// ✅ With constructors — instanceof check
+function User(name) { this.name = name; }
+function Product(name) { this.name = name; }
+
+const u = new User("Alice");
+const p = new Product("Laptop");
+
+u instanceof User;    // true ✅
+u instanceof Product; // false ✅
+p instanceof Product; // true ✅
+
+// ✅ With constructors — prototype chain
+function User(name) { this.name = name; }
+User.prototype.greet = function() { return `Hi, I'm ${this.name}`; };
+
+function Admin(name) {
+  User.call(this, name); // inherit properties
+  this.canDelete = true;
+}
+Admin.prototype = Object.create(User.prototype); // inherit methods
+
+const a = new Admin("Alice");
+a.greet(); // "Hi, I'm Alice" ← inherited from User!
+a.canDelete; // true ← own property
