@@ -203,19 +203,29 @@ const u2 = new User("B");
 u1.greet === u2.greet; // true ← SAME function, shared! 💾 saved!
 
 // ✅ With constructors — instanceof check
-function User(name) { this.name = name; }
-function Product(name) { this.name = name; }
+// const user = { name: "Alice", role: "admin" };
+// const product = { name: "Laptop", role: "electronics" };
 
-const u = new User("Alice");
-const p = new Product("Laptop");
+// function User(name) { this.name = name; }
+// function Product(name) { this.name = name; }
 
-u instanceof User;    // true ✅
-u instanceof Product; // false ✅
-p instanceof Product; // true ✅
+// const u = new User("Alice");
+// const p = new Product("Laptop");
+
+// u instanceof User;    // true ✅
+// u instanceof Product; // false ✅
+// p instanceof Product; // true ✅
 
 // ✅ With constructors — prototype chain
-function User(name) { this.name = name; }
-User.prototype.greet = function() { return `Hi, I'm ${this.name}`; };
+
+const admin = { name: "A", role: "admin", canDelete: true };
+const user = { name: "B", role: "user" };
+function User(name) { 
+    this.name = name; 
+}
+User.prototype.greet = function() { 
+    return `Hi, I'm ${this.name}`; 
+};
 
 function Admin(name) {
   User.call(this, name); // inherit properties
