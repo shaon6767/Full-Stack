@@ -218,21 +218,45 @@ u1.greet === u2.greet; // true ← SAME function, shared! 💾 saved!
 
 // ✅ With constructors — prototype chain
 
-const admin = { name: "A", role: "admin", canDelete: true };
-const user = { name: "B", role: "user" };
-function User(name) { 
-    this.name = name; 
-}
-User.prototype.greet = function() { 
-    return `Hi, I'm ${this.name}`; 
-};
+// const admin = { name: "A", role: "admin", canDelete: true };
+// const user = { name: "B", role: "user" };
+// function User(name) { 
+//     this.name = name; 
+// }
+// User.prototype.greet = function() { 
+//     return `Hi, I'm ${this.name}`; 
+// };
 
-function Admin(name) {
-  User.call(this, name); // inherit properties
-  this.canDelete = true;
-}
-Admin.prototype = Object.create(User.prototype); // inherit methods
+// function Admin(name) {
+//   User.call(this, name); // inherit properties
+//   this.canDelete = true;
+// }
+// Admin.prototype = Object.create(User.prototype); // inherit methods
 
-const a = new Admin("Alice");
-a.greet(); // "Hi, I'm Alice" ← inherited from User!
-a.canDelete; // true ← own property
+// const a = new Admin("Alice");
+// a.greet(); // "Hi, I'm Alice" <= inherited from User!
+// a.canDelete; // true ← own property
+
+//Basic Constructor
+//Constructor names start with CAPITAL letter
+
+// function Car(make, model, year) {
+//   this.make = make;      // assign to new object
+//   this.model = model;
+//   this.year = year;
+// }
+
+// const myCar = new Car("Toyota", "Camry", 2024);
+// console.log(myCar);
+// // Car { make: "Toyota", model: "Camry", year: 2024 }
+
+// console.log(myCar instanceof Car); // true
+// console.log(myCar.constructor === Car); // true
+
+// function Car(make, model) {
+//   if (!(this instanceof Car)) {
+//     return new Car(make, model); // auto-fix!
+//   }
+//   this.make = make;
+//   this.model = model;
+// }
