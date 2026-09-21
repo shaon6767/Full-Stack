@@ -299,3 +299,42 @@
 
 // // Check the chain:
 // Object.getPrototypeOf(user) === userProto; // true
+
+//Advance class examples
+
+/*
+class BankAccount {
+    #balance = 0
+    static bankName = 'AB Bank'
+    constructor(owner,initialBalance) {
+       this.owner = owner,
+       this.#balance = initialBalance 
+    }
+
+  get balance() {
+    return `${this.#balance.toFixed(2)}`;
+  }
+
+  set balance(amount) {
+    if (amount < 0) throw new Error("Cannot set negative balance");
+    this.#balance = amount;
+  }
+
+   deposit(amount) {
+    if (amount <= 0) throw new Error("Invalid amount");
+    this.#balance += amount;
+    return this;  // for chaining
+  }
+
+  withdraw(amount) {
+    if (amount > this.#balance) throw new Error("Insufficient funds");
+    this.#balance -= amount;
+    return this;
+  }
+}
+
+const acc = new BankAccount("shawn", 1000);
+let moneyDeposit = acc.deposit(500).withdraw(200)
+console.log(moneyDeposit)  
+console.log(acc.balance)  
+*/   

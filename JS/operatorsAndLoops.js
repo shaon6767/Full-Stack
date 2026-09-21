@@ -119,3 +119,20 @@
 // for (let i = 2; i < 8; i++) {
 //   if (i % 2) console.log(i);
 // }
+
+//using forEach
+
+// const numbers = [1, 2, 3];
+
+// const copy = [];
+
+// numbers.forEach((num) => {
+//   copy.push(num);
+// });
+
+// console.log(copy); // [1, 2, 3]
+
+//using map
+
+// const copy = numbers.map((num) => num);
+//map() automatically creates and returns the new array.
