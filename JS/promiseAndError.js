@@ -56,7 +56,7 @@
 // try {
 //     throw new Error ("Networking Problem")
 // } catch (err) {
-//    console.log(err.message) 
+//    console.log(err.message)
 // }
 
 // class HttpError extends Error {
@@ -70,8 +70,8 @@
 // try {
 //   throw new HttpError("Not Found", 404);
 // } catch (err) {
-//   console.log(err.message);     
-//   console.log(err.statusCode); 
+//   console.log(err.message);
+//   console.log(err.statusCode);
 // }
 
 //basic async-await
@@ -87,8 +87,7 @@
 // async function display() {
 //   const user = await getUser();
 //   console.log(user);
-// } 
-
+// }
 
 // class ApiError extends Error {
 //   constructor(message, statusCode) {
@@ -101,14 +100,14 @@
 // async function apiRequest(url) {
 //   try {
 //     const response = await fetch(url);
-    
+
 //     if (!response.ok) {
 //       throw new ApiError(
 //         `Request failed: ${response.statusText}`,
 //         response.status
 //       );
 //     }
-    
+
 //     return await response.json();
 //   } catch (err) {
 //     if (err instanceof ApiError) {
@@ -130,3 +129,52 @@
 //     throw err;  // let caller handle
 //   }
 // }
+
+// async function asyncOne() {
+//   return "hi";
+// }
+// console.log(asyncOne()); // //Promise { 'hi' }
+
+// async function run() {
+// return await Promise.resolve("This is a Promise");
+// }
+// console.log(run()); // Promise { <pending> }
+
+// async function run() {
+//   return await Promise.resolve("This is a Promise");
+// }
+
+// run().then(response => {
+//   console.log(response);
+// });  // This is a Promise (sucessfull promise)
+
+// async function test() {
+//   console.log("A");
+
+//   await console.log("B");
+
+//   console.log("C");
+// }
+
+// test();
+
+// console.log("D");
+
+// async function getData() {
+//   console.log("Start");
+  
+//   let response = await fetch("https://api.example.com/data");
+//   // ⬆️ JavaScript PAUSES here. It waits for the internet to respond.
+//   // This could take 1 second, 5 seconds, who knows.
+  
+//   let data = await response.json();
+//   // ⬆️ Pauses again until the data is fully read.
+  
+//   console.log(data);
+//   console.log("Done");
+// }
+
+//without .then/ await
+
+// let response = fetch("https://api.example.com/data");
+// console.log(response);  // Promise { <pending> } ← data is NOT ready yet!
