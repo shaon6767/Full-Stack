@@ -337,4 +337,61 @@ const acc = new BankAccount("shawn", 1000);
 let moneyDeposit = acc.deposit(500).withdraw(200)
 console.log(moneyDeposit)  
 console.log(acc.balance)  
-*/   
+*/
+
+//Callbacks
+//map() under the hood
+
+// Array.prototype.myMap = function(callback) {
+//   const result = [];
+//   for (let i = 0; i < this.length; i++) {
+//     result.push(callback(this[i], i, this));
+//     //         ↑
+//     //    calls YOUR callback for each item
+//   }
+//   return result;
+// };
+
+// Array.prototype.myMap = function (callback) {
+//   const result = [];
+//   for (let i = 0; i < this.length; i++) {
+//     result.push(callback(this[i], i));
+//   }
+//   return result;
+// };
+
+//inline anonymous functions:- this is what 95% of real-world callbacks look like ⬇️⬇️
+
+// processUser(function(name) {
+//   console.log(`Hello, ${name}!`);
+// });
+
+// //with arrow function:
+// processUser(name => console.log(`Hello, ${name}!`));
+
+// function repeat(times, callback) {
+//   for (let i = 0; i < times; i++) {
+//     callback(i);
+//   }
+// }
+
+// repeat(5, function(i) {
+//   console.log(`Iteration ${i}`);
+// });
+
+
+// const obj = {
+//   name: 'shawn',
+//   greetShawn: function(){
+//     return console.log(`hi ${this.name}`)
+    
+//   },
+
+//   arrowGreetshawn: ()=>{
+//     return console.log(`hi this is ${this.name}`)
+//   }
+// }
+
+// obj.greetShawn()
+// obj.arrowGreetshawn()
+
