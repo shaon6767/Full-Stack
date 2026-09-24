@@ -249,3 +249,16 @@ render(vNode, document.body);
   <div id="root">Hello</div>
 </body>
 */
+
+// Create virtual DOM
+const vApp = createElement(
+  "div",
+  { id: "app" },
+  createElement("h1", null, "Hello!"),
+  createElement("p", null, "This is mini React"),
+  createElement("button", null, "Click me")
+);
+
+// Render to real DOM
+render(vApp, document.getElementById("root"));
+
