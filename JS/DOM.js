@@ -259,10 +259,10 @@ const vApp = createElement(
   createElement("button", null, "Click me")
 );
 
-// Render to real DOM
+// Render real DOM
 render(vApp, document.getElementById("root"));
 
-// Result in browser:
+// Result in the browser:
 // <div id="app">
 //   <h1>Hello!</h1>
 //   <p>This is mini React</p>
