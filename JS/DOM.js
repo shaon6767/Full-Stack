@@ -262,3 +262,9 @@ const vApp = createElement(
 // Render to real DOM
 render(vApp, document.getElementById("root"));
 
+// Result in browser:
+// <div id="app">
+//   <h1>Hello!</h1>
+//   <p>This is mini React</p>
+//   <button>Click me</button>
+// </div>
