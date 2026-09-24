@@ -243,13 +243,6 @@ const vNode = {
 
 render(vNode, document.body);
 
-//Result
-/*
-<body>
-  <div id="root">Hello</div>
-</body>
-*/
-
 // Create virtual DOM
 const vApp = createElement(
   "div",
