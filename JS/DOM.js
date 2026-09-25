@@ -120,11 +120,12 @@ document.getElementById("newBtn").addEventListener("click", updateCounter);
 
 // React.createElement(type, props, ...children); ⬅
 
-
-{/* <div className="card">
+{
+  /* <div className="card">
   <h2>Title</h2>
   <p>Description</p>
-</div> */}
+</div> */
+}
 
 // // Compiles to:
 // React.createElement(
@@ -160,18 +161,16 @@ document.getElementById("newBtn").addEventListener("click", updateCounter);
 
 // lets create one from the scratch
 
-function createElement(type,props, ...children){
-return {
-  type,
-  props:{
-    ...props,
-    children: children.map(child=>
-      typeof child === 'object'
-      ? child 
-      : createTextElement(child)
-    )
-  }
-}
+function createElement(type, props, ...children) {
+  return {
+    type,
+    props: {
+      ...props,
+      children: children.map((child) =>
+        typeof child === "object" ? child : createTextElement(child),
+      ),
+    },
+  };
 }
 
 function createTextElement(text) {
@@ -179,8 +178,8 @@ function createTextElement(text) {
     type: "TEXT_ELEMENT",
     props: {
       nodeValue: text,
-      children: []
-    }
+      children: [],
+    },
   };
 }
 
@@ -191,12 +190,14 @@ function createElement(type, props, ...children) {
     type,
     props: {
       ...props,
-      children: children.flat().map(child =>
-        typeof child === "object"
-          ? child
-          : { type: "TEXT", props: { nodeValue: child, children: [] } }
-      )
-    }
+      children: children
+        .flat()
+        .map((child) =>
+          typeof child === "object"
+            ? child
+            : { type: "TEXT", props: { nodeValue: child, children: [] } },
+        ),
+    },
   };
 }
 
@@ -209,13 +210,13 @@ function render(vNode, container) {
 
   // Set properties (skip children)
   Object.keys(vNode.props)
-    .filter(key => key !== "children")
-    .forEach(key => {
+    .filter((key) => key !== "children")
+    .forEach((key) => {
       dom[key] = vNode.props[key];
     });
 
   // Recursively render children
-  vNode.props.children.forEach(child => {
+  vNode.props.children.forEach((child) => {
     render(child, dom);
   });
 
@@ -223,7 +224,7 @@ function render(vNode, container) {
   container.append(dom);
 }
 
-// Complete Flow 
+// Complete Flow
 
 const vNode = {
   type: "div",
@@ -234,11 +235,11 @@ const vNode = {
         type: "TEXT",
         props: {
           nodeValue: "Hello",
-          children: []
-        }
-      }
-    ]
-  }
+          children: [],
+        },
+      },
+    ],
+  },
 };
 
 render(vNode, document.body);
@@ -249,7 +250,7 @@ const vApp = createElement(
   { id: "app" },
   createElement("h1", null, "Hello!"),
   createElement("p", null, "This is mini React"),
-  createElement("button", null, "Click me")
+  createElement("button", null, "Click me"),
 );
 
 // Render real DOM
@@ -261,3 +262,111 @@ render(vApp, document.getElementById("root"));
 //   <p>This is mini React</p>
 //   <button>Click me</button>
 // </div>
+
+function diff(oldNode, newNode) {
+  if (!newNode) {
+    return { type: "REMOVE" };
+  }
+
+  if (!oldNode) {
+    return { type: "ADD", newNode };
+  }
+
+  if (oldNode.type !== newNode.type) {
+    return { type: "REPLACE", newNode };
+  }
+
+  if (typeof oldNode === "string" && oldNode !== newNode) {
+    return { type: "TEXT", newNode };
+  }
+
+  if (oldNode.type === newNode.type) {
+    const propChanges = diffProps(oldNode.props, newNode.props);
+    const childChanges = diffChildren(
+      oldNode.props.children,
+      newNode.props.children,
+    );
+
+    if (propChanges.length > 0 || childChanges.length > 0) {
+      return { type: "UPDATE", propChanges, childChanges };
+    }
+  }
+
+  return { type: "NONE" }; // nothing changed
+
+  //props
+  
+  function diffProps(oldProps, newProps) {
+  const changes = [];
+  
+  // Check for changed/added props
+  for (const key in newProps) {
+    if (key === "children") continue;
+    if (oldProps[key] !== newProps[key]) {
+      changes.push({ key, value: newProps[key] });
+    }
+  }
+  
+  // Check for removed props
+  for (const key in oldProps) {
+    if (key === "children") continue;
+    if (!(key in newProps)) {
+      changes.push({ key, value: undefined });
+    }
+  }
+  
+  return changes;
+}
+
+}
+
+// A Mini render Function
+
+// A function that takes a Virtual DOM object and renders it to a real DOM
+
+const vdom = {
+  type: "div",
+  props: {
+    className: "card",
+    children: [
+      { type: "h2", props: { children: [{ type: "TEXT", props: { nodeValue: "Hello" } }] } },
+      { type: "TEXT", props: { nodeValue: "World" } }
+    ]
+  }
+};
+
+render(vdom, document.getElementById("root"));
+// Should create: <div class="card"><h2>Hello</h2>World</div>
+
+//Answer
+
+function render(vNode, container) {
+  // Handle text nodes
+  if (vNode.type === "TEXT") {
+    const textNode = document.createTextNode(vNode.props.nodeValue);
+    container.append(textNode);
+    return;
+  }
+
+  // Create element
+  const dom = document.createElement(vNode.type);
+
+  // Apply props (skip children)
+  Object.keys(vNode.props)
+    .filter(key => key !== "children")
+    .forEach(key => {
+      if (key === "className") {
+        dom.setAttribute("class", vNode.props[key]);
+      } else {
+        dom[key] = vNode.props[key];
+      }
+    });
+
+  // Render children recursively
+  if (vNode.props.children) {
+    vNode.props.children.forEach(child => render(child, dom));
+  }
+
+  // Append to container
+  container.append(dom);
+}
