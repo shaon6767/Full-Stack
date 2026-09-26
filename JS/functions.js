@@ -395,3 +395,35 @@ console.log(acc.balance)
 // obj.greetShawn()
 // obj.arrowGreetshawn()
 
+// useState by hand
+
+// const React = (function() {
+//   let hooks = [];      // state slots
+//   let currentHook = 0; // current slot index
+  
+//   return {
+//     render(Component) {
+//       currentHook = 0;                    // reset before render
+//       const result = Component();          // run the component
+//       return result;
+//     },
+    
+//     useState(initialValue) {
+//       const hookIndex = currentHook;
+      
+//       // Initialize if first time
+//       if (hooks[hookIndex] === undefined) {
+//         hooks[hookIndex] = initialValue;
+//       }
+      
+//       const setState = (newValue) => {
+//         hooks[hookIndex] = newValue;
+//         console.log("State updated:", hooks);
+//         // (In real React, this would trigger re-render)
+//       };
+      
+//       currentHook++;
+//       return [hooks[hookIndex], setState];
+//     }
+//   };
+// })();
