@@ -399,12 +399,12 @@ console.log(acc.balance)
 
 // const React = (function() {
 //   let hooks = [];      // state slots
-//   let currentHook = 0; // current slot index
+//   let currentHook = 0; // current slot index of hooks
   
 //   return {
 //     render(Component) {
-//       currentHook = 0;                    // reset before render
-//       const result = Component();          // run the component
+//       currentHook = 0;                    
+//       const result = Component();
 //       return result;
 //     },
     
