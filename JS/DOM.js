@@ -1,5 +1,7 @@
 // querySelector
 
+const { useState, useEffect } = require("react");
+
 let h1 = document.querySelector("h1");
 h1.style.color = "white";
 h1.textContent = "Hellow,this is DOM Learning";
@@ -370,3 +372,37 @@ function render(vNode, container) {
   // Append to container
   container.append(dom);
 }
+
+// useEffect
+
+// 1. No dependency array → runs after EVERY render
+useEffect(() => {
+  console.log("Every render");
+});
+
+// 2. Empty array [] → runs ONCE after first render
+useEffect(() => {
+  console.log("Only once");
+}, []);
+
+// 3. With dependencies → runs when dependencies CHANGE
+useEffect(() => {
+  console.log("When count changes");
+}, [count]);
+
+
+function Timer({interval}){
+  const [seconds, setSeconds] = useState(0)
+}
+useEffect(()=>{
+  console.log(`Setting time with ${interval}`)
+
+  const id = setInterval(()=>{
+    setSeconds(s => s+1)
+  },interval)
+
+  return ()=>{
+    console.log(`Cleanup`)
+    clearInterval(id)
+  }
+},[interval])
