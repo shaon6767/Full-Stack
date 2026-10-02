@@ -2,10 +2,10 @@
   "name": "js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "Nodejs&Express.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon functions.js"
+    "dev": "nodemon Nodejs&Express.js"
   },
   "keywords": [],
   "author": "",
