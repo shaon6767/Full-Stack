@@ -17,4 +17,18 @@
 //   }
 // });
 
+// try these lines in the terminal
+
+// process.env
+// global
+
+// any file
+//    ↓
+// Node wraps it
+
+// (function (exports, require, module, __filename, __dirname) {
+
+//     // your code
+
+// });
 
